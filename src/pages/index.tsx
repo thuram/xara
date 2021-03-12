@@ -4,14 +4,27 @@ import { Button } from '@chakra-ui/button'
 import { Input } from '@chakra-ui/input'
 import { Container, Flex, Heading, Link, Text } from '@chakra-ui/layout'
 import Footer from '../components/Footer'
+import { useToast } from '@chakra-ui/toast'
 
 export default function Home() {
+  const toast = useToast()
+
   const [name, setName] = useState('')
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (!name) return
+    if (!name) {
+      toast({
+        title: 'Informações inválidas',
+        description: 'O nome é obrigatório',
+        status: 'error',
+        duration: 9000,
+        isClosable: true
+      })
+
+      return
+    }
 
     Router.push(`/resultados/${name}`)
   }
