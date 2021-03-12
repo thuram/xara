@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { Container, Flex, Heading, Link } from '@chakra-ui/layout'
+import { Container, Flex, Heading } from '@chakra-ui/layout'
 import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/table'
 
 import { dataMapper } from '../../utils/mappers'
@@ -19,8 +19,10 @@ export default function Home() {
   const toast = useToast()
 
   const { name } = query
+
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<ResultItem[]>([])
+  const [total, setTotal] = useState('')
 
   useEffect(() => {
     if (!query.name) return
@@ -42,7 +44,10 @@ export default function Home() {
           return
         }
 
-        setData(dataMapper(data[0].res))
+        const { results, total } = dataMapper(data[0].res)
+
+        setData(results)
+        setTotal(total)
         setIsLoading(false)
       })
   }, [query, name, toast, push])
@@ -65,7 +70,8 @@ export default function Home() {
           ) : (
             <>
               <Heading mb="4" color="hotpink">
-                {name}, esses foram os dados encontrados:
+                {name[0].toUpperCase() + name.slice(1)}, encontramos {total}{' '}
+                registros.
               </Heading>
 
               <Table
@@ -102,6 +108,7 @@ export default function Home() {
                 colorScheme="PINK"
                 color="hotpink"
                 onClick={() => push('/')}
+                mb={{ base: '4' }}
               >
                 Nova consulta
               </Button>
