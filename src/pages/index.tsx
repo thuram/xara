@@ -52,9 +52,9 @@ export default function Home() {
             Digite seu nome no campo abaixo e veja todos os dados relacionados.
           </Text>
 
-          <Flex as="form" mt="4">
+          <Flex as="form" mt="4" flexDirection={{ base: 'column', md: 'row' }}>
             <Input
-              placeholder="Digite apenas o primeiro nome (Ex.: lucas)"
+              placeholder="Primeiro nome (Ex.: lucas)"
               color="gray.100"
               focusBorderColor="hotpink"
               value={name}
@@ -63,7 +63,8 @@ export default function Home() {
             <Button
               type="submit"
               colorScheme="pink"
-              ml="4"
+              ml={{ base: '0', md: '4' }}
+              mt={{ base: '4', md: '0' }}
               onClick={handleSubmit}
             >
               Procurar
