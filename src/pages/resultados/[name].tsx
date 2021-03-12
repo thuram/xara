@@ -1,21 +1,13 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Container, Flex, Heading, Link, Text } from '@chakra-ui/layout'
-import {
-  Table,
-  TableCaption,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr
-} from '@chakra-ui/table'
-import { Spinner } from '@chakra-ui/spinner'
+import { Container, Flex, Heading, Link as ChakraLink } from '@chakra-ui/layout'
+import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/table'
 
 import { dataMapper } from '../../utils/mappers'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import Footer from '../../components/Footer'
+import Loader from '../../components/Loader'
+import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 type ResultItem = {
   period: string
@@ -50,29 +42,14 @@ export default function Home() {
     >
       <Container maxW="container.xl">
         {isLoading ? (
-          <Flex
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="hotpink"
-              size="xl"
-            />
-            <Text mt="4" color="hotpink">
-              Buscando os dados...
-            </Text>
-          </Flex>
+          <Loader />
         ) : (
           <>
             <Heading mb="4" color="hotpink">
               {name}, esses foram os dados encontrados:
             </Heading>
 
-            <Table variant="striped" colorScheme="pink" color="hotpink">
+            <Table variant="striped" colorScheme="pink" color="hotpink" mb="4">
               <Thead>
                 <Tr>
                   <Th>Período</Th>
@@ -94,6 +71,12 @@ export default function Home() {
                 </Tr>
               </Tfoot>
             </Table>
+
+            <Link href="/">
+              <ChakraLink color="hotpink">
+                <ChevronLeftIcon /> Voltar
+              </ChakraLink>
+            </Link>
           </>
         )}
       </Container>
