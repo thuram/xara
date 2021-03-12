@@ -7,7 +7,7 @@ A aplicação é um resumo de uma pesquisa realizada pelo IBGE sobre a frequênc
 Os dados são públicos e estão disponíveis (link abaixo).
 
 <p align="center">
-  <img src="/public/print-result.png" alt="Size Limit CLI" width="738">
+  <img src="/public/print-result.png" alt="print dos resultados" width="738">
 </p>
 
 ## Tecnologias utilizadas
@@ -28,7 +28,7 @@ Os dados são públicos e estão disponíveis (link abaixo).
 ### JS Applications
 
 1. Clone o projeto.
-2. Entre na pasta do projeto e execute o seguinte comando: 
+2. Entre na pasta do projeto e execute o seguinte comando:
 ```sh
   $ yarn
 ```
