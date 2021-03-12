@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Container, Flex, Heading, Link as ChakraLink } from '@chakra-ui/layout'
+import { Container, Flex, Heading, Link } from '@chakra-ui/layout'
 import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/table'
+import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 import { dataMapper } from '../../utils/mappers'
 import Footer from '../../components/Footer'
 import Loader from '../../components/Loader'
-import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 type ResultItem = {
   period: string
@@ -72,10 +71,8 @@ export default function Home() {
               </Tfoot>
             </Table>
 
-            <Link href="/">
-              <ChakraLink color="hotpink">
-                <ChevronLeftIcon /> Voltar
-              </ChakraLink>
+            <Link color="hotpink">
+              <ChevronLeftIcon /> Voltar
             </Link>
           </>
         )}
