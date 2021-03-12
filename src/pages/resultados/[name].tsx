@@ -32,52 +32,58 @@ export default function Home() {
   }, [query, name])
 
   return (
-    <Flex
-      bg="gray.800"
-      height="100vh"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Container maxW="container.xl">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <Heading mb="4" color="hotpink">
-              {name}, esses foram os dados encontrados:
-            </Heading>
+    <>
+      <Flex
+        bg="gray.800"
+        height={{
+          base: '100%', // 0-48em
+          xl: '100vh' // 80em+
+        }}
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Container maxW="container.xl">
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <Heading mb="4" color="hotpink">
+                {name}, esses foram os dados encontrados:
+              </Heading>
 
-            <Table variant="striped" colorScheme="pink" color="hotpink" mb="4">
-              <Thead>
-                <Tr>
-                  <Th>Período</Th>
-                  <Th isNumeric>Frequência de nascimentos</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {data.map((item, index) => (
-                  <Tr key={index}>
-                    <Td>{item.period}</Td>
-                    <Td isNumeric>{item.total}</Td>
+              <Table
+                variant="striped"
+                colorScheme="pink"
+                color="hotpink"
+                mb="4"
+              >
+                <Thead>
+                  <Tr>
+                    <Th>Período</Th>
+                    <Th isNumeric>Frequência de nascimentos</Th>
                   </Tr>
-                ))}
-              </Tbody>
-              <Tfoot>
-                <Tr>
-                  <Th>Período</Th>
-                  <Th isNumeric>Frequência de nascimentos</Th>
-                </Tr>
-              </Tfoot>
-            </Table>
-
-            <Link color="hotpink">
-              <ChevronLeftIcon /> Voltar
-            </Link>
-          </>
-        )}
-      </Container>
+                </Thead>
+                <Tbody>
+                  {data.map((item, index) => (
+                    <Tr key={index}>
+                      <Td>{item.period}</Td>
+                      <Td isNumeric>{item.total}</Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+                <Tfoot>
+                  <Tr>
+                    <Th>Período</Th>
+                    <Th isNumeric>Frequência de nascimentos</Th>
+                  </Tr>
+                </Tfoot>
+              </Table>
+            </>
+          )}
+        </Container>
+      </Flex>
       <Footer />
-    </Flex>
+    </>
   )
 }

@@ -2,16 +2,14 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Box, Container, Flex, Link, Text } from '@chakra-ui/layout'
 
 const Footer = () => (
-  <Box
-    position="fixed"
-    bottom="0"
-    left="0"
-    right="0"
-    borderTop="1px"
-    borderColor="hotpink"
-  >
+  <Box bottom="0" left="0" right="0" borderTop="1px" borderColor="hotpink">
     <Container maxW="container.xl">
-      <Flex p="4" alignItems="center" justifyContent="space-between">
+      <Flex
+        p="4"
+        flexDirection={{ base: 'column', md: 'row' }}
+        alignItems={{ base: 'flex-start', md: 'center' }}
+        justifyContent="space-between"
+      >
         <Text color="gray">
           Dados foram retirados do{' '}
           <Link
